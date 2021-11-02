@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.prod
+    restart: always # because it is routing traffic to our entire app
+    ports:
+      - 80:80
+      - 443:443
+    volumes: 
+      # - $PWD/nginx/data/certs/prod:/etc/nginx/certs
+      - $PWD/nginx/upstream.conf:/etc/nginx/conf.d/upstream.conf
+  app:
+    build: .
+    ports:
+      - '8080:80'
