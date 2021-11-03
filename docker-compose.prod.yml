@@ -12,7 +12,7 @@ services:
       - 80:80
       - 443:443
     volumes: 
-      - $PWD/nginx/certs/prod:/etc/nginx/certs
+      - $PWD/nginx/certs:/etc/nginx/certs
       - $PWD/nginx/upstream.conf:/etc/nginx/conf.d/upstream.conf
     networks:
       - modu-network
